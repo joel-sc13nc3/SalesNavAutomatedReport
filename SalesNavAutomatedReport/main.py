@@ -1,3 +1,5 @@
+# Importing classes needed for the tool
+
 import pandas as pd
 import streamlit as st
 from PIL import Image
@@ -6,6 +8,7 @@ from pptx import Presentation
 from io import BytesIO
 import warnings
 warnings.filterwarnings("ignore")
+from thinkcell import Thinkcell
 
 #Importing classes
 from Analysis_sheet import Analysis_sheet
@@ -15,6 +18,9 @@ import Charts_Functions as Charts
 
 
 
+
+
+#Creating Object
 AS = Analysis_sheet()
 
 
@@ -28,6 +34,7 @@ header = st.container()
 upload_section = st.container()
 company_name_section = st.container()
 reference_set_section = st.container()
+download_section = st.container()
 
 reference_set_list = []
 reference_set_list_name = []
@@ -652,7 +659,263 @@ elif len(reference_selection_list) == 4:
 
 
 
+#Reference sets
 
+KPI1=Charts.bar_chart_data_frame("KPI1",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI2= Charts.bar_chart_data_frame("KPI2",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI3= Charts.bar_chart_data_frame("KPI3",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI4= Charts.bar_chart_data_frame("KPI4",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI5= Charts.bar_chart_data_frame("KPI5",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI6= Charts.bar_chart_data_frame("KPI6",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI7= Charts.bar_chart_data_frame("KPI7",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI9= Charts.bar_chart_data_frame("KPI9",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI10= Charts.bar_chart_data_frame("KPI10",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI11= Charts.bar_chart_data_frame("KPI11",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI12= Charts.bar_chart_data_frame("KPI12",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI17= Charts.bar_chart_data_frame("KPI17",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI18= Charts.bar_chart_data_frame("KPI18",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI19= Charts.bar_chart_data_frame("KPI19",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI25= Charts.bar_chart_data_frame("KPI25",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI26= Charts.bar_chart_data_frame("KPI26",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI32= Charts.bar_chart_data_frame("KPI32",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)###
+KPI43= Charts.bar_chart_data_frame("KPI43",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI45= Charts.bar_chart_data_frame("KPI45",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI51= Charts.bar_chart_data_frame("KPI51",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+KPI57= Charts.bar_chart_data_frame("KPI57",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
+
+
+
+template_name = ppt_name
+
+tc = Thinkcell() # create thinkcell object
+tc.add_template(template_name)
+
+# add your template
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI1",
+    dataframe=KPI1,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI2",
+    dataframe=KPI2,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI3",
+    dataframe=KPI3,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI4",
+    dataframe=KPI4,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI5",
+    dataframe=KPI5,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI6",
+    dataframe=KPI6,
+) # add your dataframe
+
+# add your template
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI7",
+    dataframe=KPI7,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI9",
+    dataframe=KPI9,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI10",
+    dataframe=KPI10,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI11",
+    dataframe=KPI11,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI12",
+    dataframe=KPI12,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI17",
+    dataframe=KPI17,
+) # add your dataframe
+
+# add your template
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI18",
+    dataframe=KPI18,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI19",
+    dataframe=KPI19,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI25",
+    dataframe=KPI25,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI26",
+    dataframe=KPI26,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI32",
+    dataframe=KPI32,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI43",
+    dataframe=KPI43,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI45",
+    dataframe=KPI45,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI51",
+    dataframe=KPI51,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="KPI57",
+    dataframe=KPI57,
+) # add your dataframe
+
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="emplong1",
+    dataframe=emplong1,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="emplong2",
+    dataframe=emplong2,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="emplong3",
+    dataframe=emplong3,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="emplong4",
+    dataframe=emplong4,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="empshort1",
+    dataframe=empshort1,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="empshort2",
+    dataframe=empshort2,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="empshort3",
+    dataframe=empshort3,
+)
+tc.add_chart_from_dataframe(
+    template_name=template_name,
+    chart_name="empshort4",
+    dataframe=empshort4,
+)
+
+
+
+
+
+for i in range(0, len(AS.rev_df_list)):
+
+    tc.add_chart_from_dataframe(
+        template_name=template_name,
+        chart_name="Region"+str(i),
+        dataframe=AS.region_df_list[i],
+    )  # add your dataframe
+
+    tc.add_chart_from_dataframe(
+        template_name=template_name,
+        chart_name="Rev" + str(i),
+        dataframe=AS.rev_df_list[i],
+    )  # add your dataframe
+
+    tc.add_chart_from_dataframe(
+        template_name=template_name,
+        chart_name="Channel" + str(i),
+        dataframe=AS.channel_df_list[i],
+    )  # add your dataframe
+
+    tc.add_chart_from_dataframe(
+        template_name=template_name,
+        chart_name="Sales" + str(i),
+        dataframe=AS.sales_df_list[i],
+    )  # add your dataframe
+
+
+
+
+
+tc.save_ppttc("Output/template.ppttc")
+
+tc_text=str(tc)
+
+tc_text = tc_text.replace("None","null")
+tc_text = tc_text.replace("'",'"')
+
+
+
+flag= Functions.check_input_reference(AS.referenceset_df_list,AS.referece_set_list_names)
+
+
+
+if  AS.bu_name =="" or AS.company_name == "" or flag== False:
+    st.warning("Please fill alll fields of the form to download the ppttc file and power point presentation")
+
+else:
+    download_section.write("## Click the buttoms to download the files")
+    download_section.download_button("Download pttc file", data=tc_text, file_name="template.ppttc")
+
+    download_section.download_button(label='Download powerpoint template', data=binary_output.getvalue(),
+                                     file_name=template_name)
 
 
 
