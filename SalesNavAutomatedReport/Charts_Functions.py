@@ -245,6 +245,7 @@ def emp_share(company_data,company_name,bu_data,reference_set_data,kpi_id):
             data.replace(np.nan, 0, inplace=True)
             data.reset_index(inplace=True)
 
+
             conditions = [
                 (data['KPI ID'] == "KPI25"),  # Account owner FTE/sales FTE
                 (data['KPI ID'] == "KPI26"),  # Sales enablement FTE/sales FTE
