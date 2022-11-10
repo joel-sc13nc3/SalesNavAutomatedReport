@@ -184,6 +184,8 @@ reference_dict={
 
 
 
+
+
 reference_selection_list=reference_set_section.multiselect("Please select the references set you would like to include in the ppt",
                                              Referenceset_values_included,default=Referenceset_values_included)
 
@@ -191,6 +193,7 @@ reference_selection_list=reference_set_section.multiselect("Please select the re
 
 Refence_sets_included = dict((k, reference_dict[k]) for k in reference_selection_list if k in reference_dict)
 reference_keys=list(Refence_sets_included.keys())
+
 
 
 values = ["Average", "Worst Percentile", "Bottom Quartile", "Median", "Top Quartile", "Best Percentile"]
@@ -237,16 +240,6 @@ elif len(reference_selection_list)==1:
 
     region_df_list.append(Charts.Analysis_sheet_reference_set_transformation_2(analysis_sheet_reference_set_region1,
                                                                                colsname=["Region", "Value"]))
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -309,7 +302,7 @@ elif len(reference_selection_list)==2:
     reference2_newcols[1] = reference2_newcols[1].rstrip()
     cols_dict = dict(zip(list(referenceset_df2.columns), reference2_newcols))
     referenceset_df2.rename(columns=cols_dict,inplace=True)
-    st.write(referenceset_df2)
+
 
 
 
@@ -398,7 +391,6 @@ elif len(reference_selection_list) == 3:
     reference2_newcols[1] = reference2_newcols[1].rstrip()
     cols_dict = dict(zip(list(referenceset_df2.columns), reference2_newcols))
     referenceset_df2.rename(columns=cols_dict, inplace=True)
-    st.write(referenceset_df2)
 
     reference_set_list.append(referenceset_df2)
     analysis_sheet_reference_set2 = analysis_sheet_reference.iloc[6, 8:11]
@@ -523,7 +515,7 @@ elif len(reference_selection_list) == 4:
     reference2_newcols[1] = reference2_newcols[1].rstrip()
     cols_dict = dict(zip(list(referenceset_df2.columns), reference2_newcols))
     referenceset_df2.rename(columns=cols_dict, inplace=True)
-    st.write(referenceset_df2)
+
 
     reference_set_list.append(referenceset_df2)
     analysis_sheet_reference_set2 = analysis_sheet_reference.iloc[6, 8:11]
@@ -631,35 +623,42 @@ elif len(reference_selection_list) == 4:
     region_df_list.append(Charts.Analysis_sheet_reference_set_transformation_2(analysis_sheet_reference_set_region4,
                                                                                colsname=["Region", "Value"]))
 
-    try:
-        emplong1 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset1,
-                                    ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
-        emplong2 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset2,
-                                    ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
-        emplong3 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset3,
-                                    ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
-        emplong4 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset4,
-                                    ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+AS.rev_df_list = rev_df_list
+AS.sales_df_list = sales_df_list
+AS.gross_margin_df_list = gross_margin_df_list
+AS.channel_df_list = channel_df_list
+AS.region_df_list = region_df_list
+AS.referenceset_df_list = reference_set_list
+AS.referece_set_list_names = reference_keys
 
-        empshort1 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset1,
-                                     ["KPI25", "KPI26", "KPI32"])
-        empshort2 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset2,
-                                     ["KPI25", "KPI26", "KPI32"])
-        empshort3 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset3,
-                                     ["KPI25", "KPI26", "KPI32"])
-        empshort4 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset4,
-                                     ["KPI25", "KPI26", "KPI32"])
+try:
+    emplong1 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset1,
+                                ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+    emplong2 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset2,
+                                ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+    emplong3 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset3,
+                                ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+    emplong4 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset4,
+                                ["KPI25", "KPI27", "KPI28", "KPI29", "KPI30", "KPI31", "KPI32"])
+
+    empshort1 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset1,
+                                 ["KPI25", "KPI26", "KPI32"])
+    empshort2 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset2,
+                                 ["KPI25", "KPI26", "KPI32"])
+    empshort3 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset3,
+                                 ["KPI25", "KPI26", "KPI32"])
+    empshort4 = Charts.emp_share(AS.company_data, AS.company_name, AS.bu_data, AS.referenceset4,
+                                 ["KPI25", "KPI26", "KPI32"])
 
 
-    except:
-        st.error("Please complete all the information in the form")
-        st.stop()
+except:
+    st.error("Please complete all the information in the form")
+    st.stop()
 
 
 
 
 
-#Reference sets
 
 KPI1=Charts.bar_chart_data_frame("KPI1",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
 KPI2= Charts.bar_chart_data_frame("KPI2",AS.company_data,AS.company_name,AS.bu_data,AS.bu_name,AS.referenceset_df_list,AS.referece_set_list_names)
@@ -900,6 +899,12 @@ tc_text=str(tc)
 
 tc_text = tc_text.replace("None","null")
 tc_text = tc_text.replace("'",'"')
+
+tc_text = tc_text.replace("#1",'')
+tc_text = tc_text.replace("#2",'')
+tc_text = tc_text.replace("#3",'')
+tc_text = tc_text.replace("#4",'')
+
 
 
 

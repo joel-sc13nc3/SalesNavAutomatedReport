@@ -59,3 +59,17 @@ def bu_selection_func(data):
 def remove_if_is_in_list(list_to_keep,remove_list):
     return  [i for i in list_to_keep if i not in remove_list]
 
+
+def check_input_reference(reference_data,referencenames):
+
+
+    for i in range(0, len(reference_data)):
+        count_reference = +1
+        if referencenames[i] == "":
+            count_names=0
+            pass
+        else:
+            count_names = +1
+
+    flag = count_reference == count_names
+    return flag
